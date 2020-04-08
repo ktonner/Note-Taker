@@ -9,7 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-var notes = []
+//declaring the id variable
+uniqueID = 2
 
 // Routes
 // =============================================================
@@ -39,13 +40,17 @@ app.post("/api/notes", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     var newNote = req.body
     console.log(newNote)
+    uniqueID++
+    newNote.id = uniqueID
     res.json(newNote)
+    console.log(newNote)
     fs.readFile('/db/db.json', function (err, data) {
         var json = JSON.parse(data)
         json.push(newNote)
         fs.writeFile("/db/db.json", JSON.stringify(json))
 
     })
+})
 
 
     //Server listening
