@@ -12,6 +12,10 @@ app.use(express.static("public"));
 //declaring the id variable
 uniqueID = 2
 
+//grabbing the db.json
+var contents = fs.readFileSync("db/db.json")
+var notes = JSON.parse(contents)
+
 // Routes
 // =============================================================
 
@@ -39,22 +43,21 @@ app.get("/api/notes", function (req, res) {
 app.post("/api/notes", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     var newNote = req.body
-    console.log(newNote)
     uniqueID++
     newNote.id = uniqueID
     res.json(newNote)
-    console.log(newNote)
-    fs.readFile('/db/db.json', function (err, data) {
-        var json = JSON.parse(data)
-        json.push(newNote)
-        fs.writeFile("/db/db.json", JSON.stringify(json))
+    notes.push(newNote)
+    console.log(notes)
 
-    })
+    fs.writeFile('db/db.json', JSON.stringify(notes), function (err) {
+        if (err) throw err;
+        console.log('Updated');
+    });
+
 })
 
+//Server listening
 
-    //Server listening
-
-    app.listen(PORT, () => {
-        console.log(`Listening on Port ${PORT}`)
-    })
+app.listen(PORT, () => {
+    console.log(`Listening on Port ${PORT}`)
+})
