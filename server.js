@@ -53,6 +53,20 @@ app.post("/api/notes", function (req, res) {
     res.json(newNote)
 })
 
+//DELETE the note server side
+
+app.delete("/api/notes/:id", function(req, res){
+    //we want to only return the notes that DON'T have the delete id
+    notes = notes.filter(note=>note.id != req.params.id)
+    
+    //write the new json file
+    fs.writeFile('db/db.json', JSON.stringify(notes), function(err){
+        if(err) throw err;
+        console.log('Deleted')
+    })
+    return res.json(notes)
+})
+
 //Server listening
 
 app.listen(PORT, () => {
