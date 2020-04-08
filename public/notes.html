@@ -30,33 +30,15 @@
         </div>
       </div>
       <div class="col-8">
-        <form method="POST" role="form">
+       
           <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
           <textarea class="note-textarea" placeholder="Note Text"></textarea>
-        </form>
+       
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    //hook into save button
-    $("#save-btn").on("click", function (event) {
-      event.preventDefault();
-      var newNote = {
-        title: $(".note-title").val().trim(),
-        text: $(".note-textarea").val()
-      };
-
-      // Post request
-      $.post("/api/notes", newNote)
-        .then(function (data) {
-          console.log("notes.html", data);
-          alert("Note saved.");
-        });
-    });
-  </script>
-
  
   <script src="/assets/js/index.js"></script>
 </body>

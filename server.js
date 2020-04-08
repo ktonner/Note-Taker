@@ -9,9 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-//declaring the id variable
-uniqueID = 2
-
 //grabbing the db.json
 var contents = fs.readFileSync("db/db.json")
 var notes = JSON.parse(contents)
@@ -43,9 +40,9 @@ app.get("/api/notes", function (req, res) {
 app.post("/api/notes", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     var newNote = req.body
-    uniqueID++
+    console.log(req.body)
+    uniqueID = (notes.length + 1)
     newNote.id = uniqueID
-    res.json(newNote)
     notes.push(newNote)
     console.log(notes)
 
@@ -53,7 +50,7 @@ app.post("/api/notes", function (req, res) {
         if (err) throw err;
         console.log('Updated');
     });
-
+    res.json(newNote)
 })
 
 //Server listening
