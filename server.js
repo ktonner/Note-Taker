@@ -18,14 +18,14 @@ var notes = JSON.parse(contents)
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 
 //GET `/notes` - Should return the `notes.html` file.
 
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/notes.html"));
+    res.sendFile(path.join(__dirname, "/notes.html"));
 });
 
 //GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
