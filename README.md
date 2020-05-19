@@ -6,7 +6,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
-* [Test](#test)
+* [Link](#link)
 * [Questions](#questions)
 * [License](#license)
 * [Badges](#badges)
