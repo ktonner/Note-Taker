@@ -20,8 +20,8 @@ Click "Get Started" to head to the notes page. You can title and write your note
 ## Contributing
 
 
-## Test
-Run in terminal
+## Link
+https://immense-reef-64178.herokuapp.com/
 
 ## Questions
 If you have any questions, contact ktonner on GitHub.
